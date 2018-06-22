@@ -2,7 +2,7 @@ package com.king.kotlinframework
 
 import java.io.Serializable
 /**
- * Created by wuxin on 2018/6/22. 
+ * Created by wuxin on 2018/6/22.
  */
 data class GankIoDataBean constructor(val isError: Boolean = false, val results: List<ResultBean>? = null) : Serializable {
     data class ResultBean(val _id: String? = null,
