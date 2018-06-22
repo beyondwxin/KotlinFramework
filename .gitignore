@@ -8,3 +8,4 @@
 /build
 /captures
 .externalNativeBuild
+.idel/vcs.xml
