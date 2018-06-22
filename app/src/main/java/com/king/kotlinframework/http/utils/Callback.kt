@@ -3,7 +3,7 @@ package com.king.kotlinframework.http.utils
 import android.util.Log
 import com.blankj.utilcode.util.NetworkUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.king.kotlinframework.GankIoDataBean
+import com.king.kotlinframework.bean.GankIoDataBean
 import com.king.kotlinframework.app.Constants
 import com.king.kotlinframework.http.LifeSubscription
 import com.king.kotlinframework.http.Stateful

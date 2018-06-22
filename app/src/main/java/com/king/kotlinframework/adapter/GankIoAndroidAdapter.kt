@@ -1,4 +1,4 @@
-package com.king.kotlinframework
+package com.king.kotlinframework.adapter
 
 import android.text.TextUtils
 import android.view.View
@@ -6,6 +6,9 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.king.kotlinframework.R
+import com.king.kotlinframework.bean.GankIoDataBean
+
 /**
  * Created by wuxin on 2018/6/22.
  */

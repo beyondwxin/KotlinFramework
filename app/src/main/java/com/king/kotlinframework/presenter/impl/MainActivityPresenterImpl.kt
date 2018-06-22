@@ -3,7 +3,7 @@ package com.goat.kotlinbase.presenter.impl
 import android.util.Log
 import com.goat.kotlinbase.http.ApiManager
 import com.goat.kotlinbase.presenter.MainActivityPresenter
-import com.king.kotlinframework.GankIoDataBean
+import com.king.kotlinframework.bean.GankIoDataBean
 import com.king.kotlinframework.http.utils.Callback
 import com.king.kotlinframework.http.utils.HttpOnNextListener
 import shinetechzz.com.vcleaders.presenter.base.BasePresenter

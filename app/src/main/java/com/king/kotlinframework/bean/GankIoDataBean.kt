@@ -1,4 +1,4 @@
-package com.king.kotlinframework
+package com.king.kotlinframework.bean
 
 import java.io.Serializable
 /**
