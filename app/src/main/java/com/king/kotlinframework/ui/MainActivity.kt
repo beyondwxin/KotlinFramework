@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.goat.kotlinbase.presenter.MainActivityPresenter
 import com.goat.kotlinbase.presenter.impl.MainActivityPresenterImpl
-import com.king.kotlinframework.GankIoAndroidAdapter
-import com.king.kotlinframework.GankIoDataBean
+import com.king.kotlinframework.adapter.GankIoAndroidAdapter
+import com.king.kotlinframework.bean.GankIoDataBean
 import com.king.kotlinframework.R
 import kotterknife.bindView
 /**

@@ -1,7 +1,7 @@
 package com.goat.kotlinbase.http.service
 
 
-import com.king.kotlinframework.GankIoDataBean
+import com.king.kotlinframework.bean.GankIoDataBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
