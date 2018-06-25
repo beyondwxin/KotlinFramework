@@ -2,9 +2,11 @@ package com.goat.kotlinbase.http.service
 
 
 import com.king.kotlinframework.bean.GankIoDataBean
+import com.king.kotlinframework.bean.ResultBaseData
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+
 /**
  * Created by wuxin on 2018/6/22.
  */
@@ -21,6 +23,6 @@ interface GankIoService {
      * eg: http://gank.io/api/data/Android/10/1
      */
     @GET("data/{type}/{pre_page}/{page}")
-    fun getGankIoData(@Path("type") id: String, @Path("page") page: Int, @Path("pre_page") pre_page: Int): Observable<GankIoDataBean>
+    fun  getGankIoData(@Path("type") id: String, @Path("page") page: Int, @Path("pre_page") pre_page: Int): Observable<ResultBaseData<List<GankIoDataBean.ResultBean>>>
 
 }

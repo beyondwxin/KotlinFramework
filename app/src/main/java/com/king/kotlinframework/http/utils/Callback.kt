@@ -3,8 +3,8 @@ package com.king.kotlinframework.http.utils
 import android.util.Log
 import com.blankj.utilcode.util.NetworkUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.king.kotlinframework.bean.GankIoDataBean
 import com.king.kotlinframework.app.Constants
+import com.king.kotlinframework.bean.ResultBaseData
 import com.king.kotlinframework.http.LifeSubscription
 import com.king.kotlinframework.http.Stateful
 import io.reactivex.Observer
@@ -29,7 +29,7 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
     }
 
     override fun onNext(value: T) {
-        if (value is GankIoDataBean) {
+        if (value is ResultBaseData<*>) {
             onResponse(value)
         }
     }
@@ -40,29 +40,29 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
     }
 
     override fun onError(e: Throwable?) {
-        Log.e("kotlin","onError"+ e.toString())
+        Log.e("kotlin", "onError" + e.toString())
     }
 
     override fun onComplete() {
-        Log.e("kotlin","onComplete")
+        Log.e("kotlin", "onComplete")
     }
 
     /**
      * 统一处理成功回调
      */
-    fun onResponse(data: GankIoDataBean) {
+    fun <T> onResponse(data: ResultBaseData<T>) {
         if (data == null) {
             onFail(Throwable())
             mListener.onError()
             return
         }
-        if (data!!.isError){
+        if (data!!.isError) {
             ToastUtils.showShort("请求失败")
             mListener.onError()
             return
         }
         //请求成功
-        if (mTarget != null){
+        if (mTarget != null) {
             mTarget!!.setState(Constants.STATE_SUCCESS)
             mListener!!.onNext(data.results!!)
         }
@@ -73,12 +73,12 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
         //判断网络是否可用
         if (!NetworkUtils.isAvailableByPing()) {
             ToastUtils.showShort("你连接的网络有问题，请检查网络连接状态")
-            if (mTarget != null){
+            if (mTarget != null) {
                 mTarget!!.setState(Constants.STATE_ERROR)
             }
             return
         }
-        if (e is HttpException){
+        if (e is HttpException) {
             mTarget!!.setState(Constants.STATE_ERROR)
             ToastUtils.showShort("服务器异常")
             return

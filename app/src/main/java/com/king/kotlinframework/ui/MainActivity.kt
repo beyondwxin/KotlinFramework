@@ -1,22 +1,25 @@
 package com.king.kotlinframework.ui
 
+import android.content.Intent
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.Button
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.goat.kotlinbase.presenter.MainActivityPresenter
 import com.goat.kotlinbase.presenter.impl.MainActivityPresenterImpl
+import com.king.kotlinframework.R
 import com.king.kotlinframework.adapter.GankIoAndroidAdapter
 import com.king.kotlinframework.bean.GankIoDataBean
-import com.king.kotlinframework.R
 import kotterknife.bindView
 /**
  * Created by wuxin on 2018/6/22.
  */
-class MainActivity(override val layoutId: Int = R.layout.activity_main) : BaseActivity<MainActivityPresenterImpl>(), MainActivityPresenter.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
-
+class MainActivity(override val layoutId: Int = R.layout.activity_main) : BaseActivity<MainActivityPresenterImpl>(), MainActivityPresenter.View, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnClickListener {
     private var page: Int = 0
     private val PRE_PAGE = 10
+    val mButton: Button by bindView(R.id.toSecond)
     val mRecyclerView: RecyclerView by bindView(R.id.recycler_view)
     val mRefresh: SwipeRefreshLayout by bindView(R.id.refresh)
     private var isRefresh = false
@@ -51,6 +54,15 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) : BaseAc
         mAdapter.setOnLoadMoreListener(this, mRecyclerView)
     }
 
+    override fun onClick(v: View?) {
+        when (v?.id){
+            R.id.toSecond->{
+                val intent = Intent()
+                intent.setClass(this, SecondActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
 
     override fun onRefresh() {
         page = 0

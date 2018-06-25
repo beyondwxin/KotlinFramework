@@ -12,6 +12,7 @@ interface MainActivityPresenter {
 
     interface Presenter {
         fun fetchGankIoData(page: Int, pre_page: Int)
+//        fun <T> toSecondActivity(toClass: Class<T>)
     }
 }
 
