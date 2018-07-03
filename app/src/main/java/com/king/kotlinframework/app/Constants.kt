@@ -8,10 +8,10 @@ interface Constants{
         /**
          * 网络请求状态
          */
-        val STATE_UNKNOWN = 1002
-        val STATE_LOADING = 1003
-        val STATE_ERROR = 1004
-        val STATE_EMPTY = 1005
-        val STATE_SUCCESS = 1006
+        const val STATE_UNKNOWN = 1002
+        const val STATE_LOADING = 1003
+        const val STATE_ERROR = 1004
+        const val STATE_EMPTY = 1005
+        const val STATE_SUCCESS = 1006
     }
 }

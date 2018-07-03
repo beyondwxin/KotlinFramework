@@ -17,7 +17,7 @@ class GankIoAndroidAdapter(data: List<GankIoDataBean.ResultBean>) : BaseQuickAda
         val ivAndroidPic = helper.getView<ImageView>(R.id.iv_android_pic)
         if (item.images != null && item.images.isNotEmpty() && !TextUtils.isEmpty(item.images[0])) {
             ivAndroidPic.visibility = View.VISIBLE
-            Glide.with(ivAndroidPic.context).load(item.images[0]).crossFade(500).into(ivAndroidPic)
+            Glide.with(ivAndroidPic.context).load(item.images[0]).into(ivAndroidPic)
         } else {
             ivAndroidPic.visibility = View.GONE
         }

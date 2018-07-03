@@ -58,11 +58,11 @@ abstract class LoadingPage(val mContext: Context, attrs: AttributeSet? = null, d
 
     private fun createErrorView(): View? {
         errorView = LayoutInflater.from(mContext).inflate(R.layout.layout_state_error, null)
-        errorView!!.setOnClickListener({
+        errorView!!.setOnClickListener {
             state = STATE_LOADING
             showPage()
             loadData()
-        })
+        }
         return errorView
     }
 

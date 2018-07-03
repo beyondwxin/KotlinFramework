@@ -15,8 +15,8 @@ import retrofit2.HttpException
  * Created by wuxin on 2018/6/22.
  * 为网络请求提供一个主构造方法进行结果回调处理
  */
-class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
-    var mLifeSubscription: LifeSubscription? = null
+class Callback<T>(private val mListener: HttpOnNextListener<Any?>) : Observer<T> {
+    private var mLifeSubscription: LifeSubscription? = null
     var mTarget: Stateful? = null
 
     fun detachView() {
@@ -39,8 +39,9 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
         mLifeSubscription!!.bindSubscription(d!!)
     }
 
-    override fun onError(e: Throwable?) {
+    override fun onError(e: Throwable) {
         Log.e("kotlin", "onError" + e.toString())
+        onFail(e)
     }
 
     override fun onComplete() {
@@ -50,7 +51,7 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
     /**
      * 统一处理成功回调
      */
-    fun <T> onResponse(data: ResultBaseData<T>) {
+    private fun <T> onResponse(data: ResultBaseData<T>) {
         if (data == null) {
             onFail(Throwable())
             mListener.onError()
@@ -68,7 +69,7 @@ class Callback<T>(val mListener: HttpOnNextListener<Any?>) : Observer<T> {
         }
     }
 
-    fun onFail(e: Throwable) {
+    private fun onFail(e: Throwable) {
         mListener.onError()
         //判断网络是否可用
         if (!NetworkUtils.isAvailableByPing()) {

@@ -39,7 +39,7 @@ class ApiManager private constructor() {
                     .baseUrl(GankIoService.API_GANKIO)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+                    .build()
             mService = retrofit.create<GankIoService>(GankIoService::class.java)
         }
         return mService!!

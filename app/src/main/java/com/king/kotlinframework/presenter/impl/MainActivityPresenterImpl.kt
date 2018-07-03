@@ -14,12 +14,12 @@ import shinetechzz.com.vcleaders.presenter.base.BasePresenter
 class MainActivityPresenterImpl : BasePresenter<MainActivityPresenter.View>(), MainActivityPresenter.Presenter {
 
     override fun fetchGankIoData(page: Int, pre_page: Int) {
-        val listener = object : HttpOnNextListener<Any>() {
+        val listener = object : HttpOnNextListener<List<GankIoDataBean.ResultBean>>() {
             override fun onNext(t: Any) {
                 mView!!.refreshView(t as List<GankIoDataBean.ResultBean>)
             }
         }
-        Log.e("parameter", "page:" + page + ",pre_page:" + pre_page)
+        Log.e("parameter", "page:$page,pre_page:$pre_page")
         invoke(ApiManager.instence.service.getGankIoData("Android", page, pre_page), Callback(listener))
     }
 }
